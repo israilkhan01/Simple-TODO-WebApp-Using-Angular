@@ -3,12 +3,18 @@
 
   <div>
     <div>
-        <h5>
+        <h5 [ngClass]="{'strike':!todo.active}">
             {{todo.title}}
         </h5>
-        <p>
+        <p [ngClass]="{'strike':!todo.active}">
             {{todo.desc}}
         </p>
+    </div>
+    <div class="form-group form-check">
+      <input class="form-check-input" (click)="onCheckBoxClick(todo)" [checked]="!todo.active" type="checkbox" value="" id="todo{{i}}">
+      <label class="form-check-label" for="todo{{i}}">
+        Done
+      </label>
     </div>
     <button class="btn btn-danger" (click) = "onClick(todo)">
         DELETE
