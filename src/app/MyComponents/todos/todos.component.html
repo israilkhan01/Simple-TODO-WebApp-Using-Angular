@@ -4,12 +4,16 @@
 <h4>
     your Todos
 </h4>
-<ul *ngFor="let todo of todos">
-    <!-- <li>
-        {{todo.sno}} - {{todo.title}} - {{todo.desc}}
-    </li> 
-     -->
-     <app-todo-item [todo]="todo" (todoDelete) = "deleteTodo($event)">
+<div *ngIf="todos.length==0; else elseBlock">No Todos Present!</div>
+<ng-template #elseBlock>
 
-     </app-todo-item>
-</ul>
+    <ul class="ul" *ngFor="let todo of todos">
+        <!-- <li>
+            {{todo.sno}} - {{todo.title}} - {{todo.desc}}
+        </li> 
+    -->
+    <app-todo-item [todo]="todo" (todoDelete) = "deleteTodo($event)">
+        
+    </app-todo-item>
+    </ul>
+</ng-template>
